@@ -21,8 +21,7 @@ RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packa
 RUN sh -c "echo 'deb https://gitsecret.jfrog.io/artifactory/git-secret-deb git-secret main' >> /etc/apt/sources.list" && \
     wget -qO - 'https://gitsecret.jfrog.io/artifactory/api/gpg/key/public' | apt-key add - && \
     apt-get update && apt-get install -y git-secret
-
-
+RUN apt install -y maven
 RUN usermod -u $HOST_UID jenkins
 RUN groupmod -g $HOST_GID docker
 RUN usermod -aG docker jenkins
